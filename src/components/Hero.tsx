@@ -113,7 +113,7 @@ export default function Hero() {
           </p>
           <Link
             href="/propiedades/casa-palermo-chico"
-            className="inline-flex items-center gap-2 text-paper text-sm tracking-wide uppercase border-b border-stone pb-0.5 hover:border-paper transition-colors font-sans"
+            className="hidden md:inline-flex items-center gap-2 text-paper text-sm tracking-wide uppercase border-b border-stone pb-0.5 hover:border-paper transition-colors font-sans"
           >
             Explorar propiedades →
           </Link>
