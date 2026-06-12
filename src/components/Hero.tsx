@@ -108,7 +108,7 @@ export default function Hero() {
 
         {/* Right: tagline + CTA */}
         <div className="flex-shrink-0 text-right">
-          <p className="text-paper font-serif text-3xl md:text-4xl mb-5">
+          <p className="hidden md:block text-paper font-serif text-3xl md:text-4xl mb-5">
             Te ayudamos a encontrar el lugar perfecto para vivir cerca del mar.
           </p>
           <Link
