@@ -109,10 +109,10 @@ export default function Hero() {
         {/* Right: tagline + CTA */}
         <div className="flex-shrink-0 text-right">
           <p className="hidden md:block text-paper font-serif text-3xl md:text-4xl mb-5">
-            Te ayudamos a encontrar el lugar perfecto para vivir cerca del mar.
+            Equipo N°1 de España 2025
           </p>
           <Link
-            href="/propiedades/casa-palermo-chico"
+            href="/propiedades"
             className="hidden md:inline-flex items-center gap-2 text-paper text-sm tracking-wide uppercase border-b border-stone pb-0.5 hover:border-paper transition-colors font-sans"
           >
             Explorar propiedades →

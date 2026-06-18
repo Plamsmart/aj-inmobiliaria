@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import CalButton from "./CalButton";
+import { createLead } from "@/actions/leadActions";
 
 const contactData = [
   { icon: "📞", label: "653 011 150" },
@@ -18,10 +20,24 @@ const labelClass =
 
 export default function Contacto() {
   const [enviado, setEnviado] = useState(false);
+  const [enviando, setEnviando] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
-  function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
-    setEnviado(true);
+    setErrorMsg("");
+    setEnviando(true);
+
+    try {
+      await createLead(new FormData(e.currentTarget));
+      setEnviado(true);
+    } catch (err) {
+      setErrorMsg(
+        err instanceof Error ? err.message : "Ha ocurrido un error. Inténtalo de nuevo."
+      );
+    } finally {
+      setEnviando(false);
+    }
   }
 
   return (
@@ -64,11 +80,10 @@ export default function Contacto() {
           {enviado ? (
             <div className="h-full flex flex-col justify-center py-8">
               <p className="font-serif text-2xl text-ink mb-3">
-                Mensaje recibido
+                ¡Mensaje recibido! Te contactaremos pronto.
               </p>
               <p className="font-sans text-sm text-mist leading-relaxed max-w-sm">
-                Nos pondremos en contacto contigo en menos de 24 horas. Gracias
-                por confiar en AJ Inmobiliaria.
+                Gracias por confiar en AJ Inmobiliaria.
               </p>
             </div>
           ) : (
@@ -88,6 +103,19 @@ export default function Contacto() {
               </div>
 
               <div>
+                <label htmlFor="telefono" className={labelClass}>
+                  Teléfono
+                </label>
+                <input
+                  id="telefono"
+                  name="telefono"
+                  type="tel"
+                  placeholder="+34 600 000 000"
+                  className={fieldClass}
+                />
+              </div>
+
+              <div>
                 <label htmlFor="email" className={labelClass}>
                   Email
                 </label>
@@ -102,26 +130,13 @@ export default function Contacto() {
               </div>
 
               <div>
-                <label htmlFor="telefono" className={labelClass}>
-                  Teléfono
-                </label>
-                <input
-                  id="telefono"
-                  name="telefono"
-                  type="tel"
-                  placeholder="+34 600 000 000"
-                  className={fieldClass}
-                />
-              </div>
-
-              <div>
                 <label htmlFor="consulta" className={labelClass}>
                   ¿Qué buscas?
                 </label>
                 <div className="relative">
                   <select
                     id="consulta"
-                    name="consulta"
+                    name="tipo"
                     required
                     defaultValue=""
                     className={`${fieldClass} appearance-none pr-6 cursor-pointer`}
@@ -153,16 +168,25 @@ export default function Contacto() {
                 />
               </div>
 
+              {errorMsg && (
+                <p className="font-sans text-sm" style={{ color: "#c0392b" }}>
+                  {errorMsg}
+                </p>
+              )}
+
               <button
                 type="submit"
-                className="self-start font-sans text-sm tracking-[0.15em] uppercase px-8 py-3 transition-opacity hover:opacity-80"
+                disabled={enviando}
+                className="self-start font-sans text-sm tracking-[0.15em] uppercase px-8 py-3 transition-opacity hover:opacity-80 disabled:opacity-50"
                 style={{
                   backgroundColor: "var(--forest)",
                   color: "var(--paper)",
                 }}
               >
-                Enviar consulta
+                {enviando ? "Enviando…" : "Enviar consulta"}
               </button>
+
+              <CalButton text="Reservar visita" />
             </form>
           )}
         </div>

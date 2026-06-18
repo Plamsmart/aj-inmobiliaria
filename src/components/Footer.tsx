@@ -69,6 +69,13 @@ export default function Footer() {
             </span>
           ))}
         </div>
+
+        {/* Row 4 — Admin link */}
+        <div className="pt-4">
+          <Link href="/admin/login" style={{ color: "rgba(255,255,255,0.15)" }}>
+            · Admin
+          </Link>
+        </div>
       </div>
     </footer>
   );

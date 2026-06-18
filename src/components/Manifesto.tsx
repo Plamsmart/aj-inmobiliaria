@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Manifesto() {
   return (
     <section
@@ -36,27 +38,24 @@ export default function Manifesto() {
         <div className="flex items-center gap-10">
           {[
             {
-              initial: "A",
+              src: "/aroa.png",
               name: "Aroa",
               role: "Fundadora · Agente inmobiliaria",
             },
             {
-              initial: "J",
+              src: "/jon.png",
               name: "Jon",
               role: "Fundador · Agente inmobiliario",
             },
-          ].map(({ initial, name, role }) => (
+          ].map(({ src, name, role }) => (
             <div key={name} className="flex flex-col items-center gap-3">
-              <div
-                className="w-14 h-14 rounded-full flex items-center justify-center font-serif text-xl"
-                style={{
-                  backgroundColor: "rgba(249,248,245,0.1)",
-                  color: "rgba(249,248,245,0.8)",
-                  border: "1px solid rgba(249,248,245,0.15)",
-                }}
-              >
-                {initial}
-              </div>
+              <Image
+                src={src}
+                alt={name}
+                width={96}
+                height={96}
+                className="rounded-full object-cover"
+              />
               <div className="flex flex-col items-center gap-0.5">
                 <span
                   className="font-sans text-sm"

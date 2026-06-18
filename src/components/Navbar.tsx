@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import CalButton from "./CalButton";
 
 function scrollToSection(id: string) {
   const target = document.getElementById(id);
@@ -108,16 +109,10 @@ export default function Navbar() {
               </button>
             </li>
             <li>
-              <button
-                onClick={() => scrollToSection("contacto")}
-                className={`text-sm tracking-wide uppercase px-5 py-2 border transition-colors ${
-                  scrolled
-                    ? "border-ink text-ink hover:bg-ink hover:text-paper"
-                    : "border-paper text-paper hover:bg-paper hover:text-ink"
-                }`}
-              >
-                Contacto
-              </button>
+              <CalButton
+                text="Solicitar visita"
+                className="text-sm tracking-wide uppercase px-5 py-2 transition-opacity hover:opacity-80"
+              />
             </li>
           </ul>
 
