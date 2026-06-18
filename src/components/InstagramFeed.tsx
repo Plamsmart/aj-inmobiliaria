@@ -35,9 +35,9 @@ export default async function InstagramFeed() {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-10 justify-items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 justify-items-center">
           {posts.map((post) => (
-            <div key={post.id} className="flex flex-col items-center gap-3">
+            <div key={post.id} className="flex flex-col items-center gap-3 mx-auto">
             <a
               href={post.url}
               target="_blank"
