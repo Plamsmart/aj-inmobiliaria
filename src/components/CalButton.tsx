@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { getCalApi } from "@calcom/embed-react";
 
-const CAL_LINK = "pedro-lambarri/visita-a-propiedad";
+const CAL_LINK = "ajinmobiliaria26/visita-a-propiedad";
 const CAL_NAMESPACE = "visita-a-propiedad";
 
 interface CalButtonProps {
@@ -14,7 +14,7 @@ interface CalButtonProps {
 export default function CalButton({ text, className }: CalButtonProps) {
   useEffect(() => {
     (async function () {
-      const cal = await getCalApi({ namespace: CAL_NAMESPACE });
+      const cal = await getCalApi({ namespace: CAL_NAMESPACE, embedJsUrl: "https://cal.eu/embed/embed.js" });
       cal("ui", {
         theme: "light",
         cssVarsPerTheme: {
@@ -29,6 +29,7 @@ export default function CalButton({ text, className }: CalButtonProps) {
     <button
       data-cal-namespace={CAL_NAMESPACE}
       data-cal-link={CAL_LINK}
+      data-cal-origin="https://cal.eu"
       data-cal-config='{"layout":"month_view"}'
       className={
         className ??
