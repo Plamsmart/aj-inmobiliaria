@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Intro from "@/components/Intro";
 import Propiedades from "@/components/Propiedades";
+import TestimoniosCarrusel from "@/components/TestimoniosCarrusel";
 import Manifesto from "@/components/Manifesto";
 import Journal from "@/components/Journal";
 import InstagramFeed from "@/components/InstagramFeed";
@@ -45,6 +46,7 @@ export default function Home() {
       <main>
         <Hero />
         <Propiedades />
+        <TestimoniosCarrusel />
         <Intro />
         <Manifesto />
         <InstagramFeed />

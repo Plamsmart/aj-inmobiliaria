@@ -11,6 +11,7 @@ const NAV_ITEMS = [
   { href: "/admin/clientes", label: "Clientes" },
   { href: "/admin/propiedades/nueva", label: "+ Nueva propiedad" },
   { href: "/admin/instagram", label: "Instagram" },
+  { href: "/admin/testimonios", label: "Testimonios" },
 ];
 
 export default function AdminMobileHeader() {
