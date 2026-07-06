@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { createBrowserSupabaseClient } from "@/lib/supabase/client";
 
 const inputStyle: React.CSSProperties = {
@@ -37,6 +38,8 @@ export default function AdminLoginPage() {
       return;
     }
 
+    // Mark this as an active browser session — SessionGuard checks this on mount
+    sessionStorage.setItem("aj-admin-active", "1");
     router.push("/admin/propiedades");
     router.refresh();
   }
@@ -119,6 +122,13 @@ export default function AdminLoginPage() {
           {loading ? "Entrando…" : "Entrar"}
         </button>
       </form>
+      <Link
+        href="/"
+        className="absolute bottom-8 font-sans text-xs transition-opacity hover:opacity-70"
+        style={{ color: "#4a4a47" }}
+      >
+        ← Volver a la web
+      </Link>
     </div>
   );
 }

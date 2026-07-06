@@ -18,9 +18,12 @@ export async function proxy(request: NextRequest) {
             request.cookies.set(name, value)
           );
           response = NextResponse.next({ request });
-          cookiesToSet.forEach(({ name, value, options }) =>
-            response.cookies.set(name, value, options)
-          );
+          cookiesToSet.forEach(({ name, value, options }) => {
+            // Strip maxAge/expires → session cookie (deleted when browser closes)
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            const { maxAge, expires, ...sessionOnly } = options ?? {};
+            response.cookies.set(name, value, sessionOnly);
+          });
         },
       },
     }

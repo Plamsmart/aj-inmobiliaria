@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import LogoutButton from "@/components/admin/LogoutButton";
 import AdminMobileHeader from "@/components/admin/AdminMobileHeader";
+import SessionGuard from "@/components/admin/SessionGuard";
 
 export const metadata: Metadata = {
   title: { default: "Admin", template: "%s · Admin AJ" },
@@ -69,6 +70,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       className="flex flex-col min-h-screen md:flex-row"
       style={{ backgroundColor: "#0d0d0c", color: "var(--paper)", fontFamily: "var(--font-sans)" }}
     >
+      <SessionGuard />
       {/* ── Mobile header ────────────────────────────────────── */}
       <AdminMobileHeader />
 
