@@ -60,7 +60,10 @@ export default function Hero() {
         src={slots[0]}
         onEnded={() => handleEnded(0)}
         className="absolute inset-0 w-full h-full object-cover"
-        style={{ opacity: opacities[0], transition: "opacity 800ms ease-in-out" }}
+        style={{
+          opacity: opacities[0],
+          transition: "opacity 800ms ease-in-out",
+        }}
       />
 
       {/* Video slot 1 — preloads the next video while slot 0 plays */}
@@ -72,7 +75,10 @@ export default function Hero() {
         src={slots[1]}
         onEnded={() => handleEnded(1)}
         className="absolute inset-0 w-full h-full object-cover"
-        style={{ opacity: opacities[1], transition: "opacity 800ms ease-in-out" }}
+        style={{
+          opacity: opacities[1],
+          transition: "opacity 800ms ease-in-out",
+        }}
       />
 
       {/* Gradient overlay for text legibility */}
@@ -109,7 +115,7 @@ export default function Hero() {
         {/* Right: tagline + CTA */}
         <div className="flex-shrink-0 text-right">
           <p className="hidden md:block text-paper font-serif text-3xl md:text-4xl mb-5">
-            Equipo N°1 de España 2025
+            Expertos locales, resultados reales
           </p>
           <Link
             href="/propiedades"
